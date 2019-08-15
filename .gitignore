@@ -5,3 +5,5 @@ configs/bird/prefix-filters
 configs/bird/route-announcements
 configs/bird6/prefix-filters
 configs/bird6/route-announcements
+dumpers.txt
+bgpdumpers.txt
