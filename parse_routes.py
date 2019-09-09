@@ -1,13 +1,19 @@
-
 filename = "bgpdumpers.txt"
 
-fp =  open(filename, 'r')
-splitLines = [line.split('|') for line in fp]
-prefixHopPairs = [(line[5], line[6].split()[0]) for line in splitLines if line[2] == 'A']
-print(prefixHopPairs[:10])
+prefixToHops = defaultdict(set())
+
+with open(filename, 'r') as fp:
+	for line in fp:
+		splitLine = line.split('|')
+		if splitLine[2] == 'A':
+			prefixToHops[splitLine[5]].add(splitLine[6].split()[0])
+		elif splitLine[2] == 'W':
+			prefixToHops[splitLine[5]].remove(splitLine[6].split()[0])
+
 
 nextHops = set([pair[1] for pair in prefixHopPairs])
 prefixes = set([pair[0] for pair in prefixHopPairs])
+
 
 print("%d nexthops, %d prefixes" % (len(nextHops), len(prefixes)))
 
