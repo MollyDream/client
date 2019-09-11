@@ -7,3 +7,5 @@ configs/bird6/prefix-filters
 configs/bird6/route-announcements
 dumpers.txt
 bgpdumpers.txt
+fulldumpers.txt
+*~
